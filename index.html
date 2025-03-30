@@ -73,7 +73,7 @@
                 <label for="feedback" style="text-align: start;">Any thoughts?</label>
                 <textarea id="feedback" name="feedback" placeholder="Give feedback on the design, sign, or idea of pet-centered events!" style="min-height: 20svh; width: 100%;"></textarea>
                 <div class="spacer" aria-hidden="true"></div>
-                <button type="button" onclick='let feedback = []; feedback.push(document.getElementById("email")); feedback.push(document.getElementById("feedback")); nextStep(5, `feedback`,feedback,this)'>Submit</button> 
+                <button type="button" onclick='let feedback = []; feedback.push(document.getElementById("email").value); feedback.push(document.getElementById("feedback").value); nextStep(5, `feedback`,feedback,this)'>Submit</button> 
                 <div class="spacer" aria-hidden="true"></div>
                 
             </div>
