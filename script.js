@@ -19,6 +19,7 @@ async function nextStep(step, metric, val, button) {
     try {
         button.innerText = "Loading...";
         button.classList.add("disabled");
+        console.log(`Sending data: metric=${metric}, val=${val}`);
         const response = await fetch(`https://www.tedxiu.com/_functions/petprototypescan?metric=${metric}&val=${val}`, {
             method: "post",
             headers: {
