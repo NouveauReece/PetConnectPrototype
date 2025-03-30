@@ -2,12 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     showStep(1);
 });
 
-function sanitise(data) {
-    return data.replace(/[^\p{L}.@.0-9.-.'.ʼ.＇.!.\s]/g, function (match) {
-      return "";
-    });
-  }
-
 function showStep(step) {
     const steps = document.querySelectorAll('.form-step');
     steps.forEach((stepElement, index) => {
@@ -19,17 +13,20 @@ function showStep(step) {
 }
 
 async function nextStep(step, metric, val, button) {
+    setTimeout(() => {
+        showStep(step);
+    }, 1500);
     try {
         button.innerText = "Loading...";
         button.classList.add("disabled");
-        const response = await fetch(`https://www.tedxiu.com/_functions/petprototypescan?metric=${metric}&val=${sanitise(val)}`, {
+        const response = await fetch(`https://www.tedxiu.com/_functions/petprototypescan?metric=${metric}&val=${val}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             }
         });
         if (response.ok) {
-            showStep(step);
+            
         } else {
             console.error(`Response status: ${response.status}`);
         }
