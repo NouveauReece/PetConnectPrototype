@@ -1,0 +1,187 @@
+html {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(180deg, #b578c1, #d6af83);
+    height: 100vh;
+}
+
+body {
+    height: 100svh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    width: calc(100% - 100px);
+    height: calc(100svh - 100px);
+    max-width: 600px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #f9f9f961;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 3px solid #f9f9f994;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    width: 100%;
+    height: calc(100svh - 130px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+input[type="email"], textarea {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #a565b1;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.form-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    display: none;
+    width: 100%;
+    height: calc(100svh - 80px);
+    animation: fadein 0.5s; /* Fade-in animation for each step */
+}
+
+.form-step.active {
+    opacity: 1;
+    display: flex;
+}
+
+.spacer {   
+    flex: 0 1 1000px;
+}
+
+button, a {
+    width: 100%;
+    margin-top: 20px;
+    margin: 20px 10px;
+    padding: 10px 20px;
+    background-color: #a565b1;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid #661675b3;
+    font-weight: bolder;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;  
+}
+
+button:hover, button:active, a:hover, a:active {
+    background-color: #661675b3;
+    border-right: 2.5px solid #661675b3;
+    border-bottom: 2.5px solid #661675b3;
+    margin-top: calc(23px);
+}
+
+button:disabled, a:disabled {
+    background-color: #ae9ab2;
+    border-bottom: 2.5px solid #6e4874b3;
+    cursor: not-allowed;
+}
+
+:root {
+    --form-control-color: white;
+    --form-control-disabled: #959495;
+  }
+
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+fieldset > div {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: #67167549;
+    /* Not removed via appearance */
+    margin: 0;
+  
+    font: inherit;
+    color: #661675b3;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid #661675b3;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+  
+    display: grid;
+    place-content: center;
+  }
+  
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #661675b3;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+  
+  input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+  }
+  
+  input[type="checkbox"]:disabled {
+    --form-control-color: var(--form-control-disabled);
+  
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+  }
